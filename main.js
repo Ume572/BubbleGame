@@ -1,15 +1,15 @@
-var timer = 6;
+var timer = 60;
 var score = 0;
 var hitrun = 0;
 
 
-function increaseScore(){
+function increaseScore() {
     score += 10;
-    document.querySelector("#scoreval").textContent=score;
+    document.querySelector("#scoreval").textContent = score;
 }
-function getNewhit(){
-    hitrun = Math.floor(Math.random()*10);
-   document.querySelector("#hitval").textContent=hitrun;
+function getNewhit() {
+    hitrun = Math.floor(Math.random() * 10);
+    document.querySelector("#hitval").textContent = hitrun;
 }
 
 
@@ -30,22 +30,22 @@ function runTimer() {
 
             document.querySelector("#timerval").textContent = timer;
         } else {
-            document.querySelector("#pbtm").innerHTML=`<h1>GAME OVER HO GYA DEAR`;
-            clearInternal(timerint);
+            document.querySelector("#pbtm").innerHTML = `<h1>GAME OVER `;
+            clearInterval(timerint);
         }
     }, 1000);
 }
 
 document.querySelector("#pbtm")
-.addEventListener("click",function(dets){
-     var clickednum = Number(dets.target.textContent);
-     if(clickednum === hitrun){
-        increaseScore();
-        makeBubble();
-        getNewhit();
-     }
-    
-});
+    .addEventListener("click", function (dets) {
+        var clickednum = Number(dets.target.textContent);
+        if (clickednum === hitrun) {
+            increaseScore();
+            makeBubble();
+            getNewhit();
+        }
+
+    });
 runTimer();
 
 makeBubble();
